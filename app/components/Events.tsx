@@ -2,8 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Calendar, MapPin, Mic2, Users, Award, Star } from 'lucide-react'
-import Image from 'next/image'
+import { Calendar, MapPin, Mic2, Award, Star } from 'lucide-react'
 
 const events = [
   {
@@ -14,7 +13,6 @@ const events = [
     employer: 'Carl-Benz-Stadion',
     location: 'Mannheim',
     description: 'Moderation des Stadionsingens vor tausenden Fans im Carl-Benz-Stadion.',
-    image: '/images/image04.jpg',
   },
   {
     icon: Award,
@@ -24,7 +22,6 @@ const events = [
     employer: 'Lokalrundfunktage',
     location: 'Rhein-Neckar-Region',
     description: 'Vortrag über Moderation und digitale Medien auf der Fachkonferenz für Lokalrundfunk.',
-    image: null,
   },
   {
     icon: Mic2,
@@ -34,7 +31,6 @@ const events = [
     employer: 'Carl-Benz-Stadion',
     location: 'Mannheim',
     description: 'Moderation des Stadionsingens mit begeisterten Fans im Carl-Benz-Stadion.',
-    image: '/images/image04.jpg',
   },
   {
     icon: Star,
@@ -44,17 +40,6 @@ const events = [
     employer: 'Stadt Mannheim',
     location: 'Mannheim',
     description: 'Live-Moderation auf der Hauptbühne des größten Stadtfests der Region.',
-    image: '/images/image01.jpg',
-  },
-  {
-    icon: Mic2,
-    title: 'RNF Beiträge',
-    position: 'Moderatorin & Redakteurin',
-    date: '2021 – 2026',
-    employer: 'Rhein-Neckar-Fernsehen',
-    location: 'Rhein-Neckar-Region',
-    description: 'Moderation und Redaktion für lokale Fernsehformate beim ältesten privaten regionalen Fernsehsender Deutschlands.',
-    image: '/images/image03.jpg',
   },
 ]
 
@@ -66,9 +51,9 @@ export default function Events() {
     <section
       id="events"
       ref={ref}
-      className="py-24 md:py-32 bg-white dark:bg-zinc-950 overflow-hidden"
+      className="py-24 md:py-32 bg-white dark:bg-zinc-950"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -94,72 +79,49 @@ export default function Events() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
           >
-            Eine Auswahl meiner Moderations-Erfahrungen bei Events, im Fernsehen und auf der Bühne.
+            Eine Auswahl meiner Moderations-Erfahrungen bei Events und auf der Bühne.
           </motion.p>
         </div>
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-500 via-primary-500 to-zinc-200 dark:to-zinc-800 hidden md:block" />
-
-          <div className="space-y-16">
-            {events.map((event, index) => (
-              <motion.div
-                key={event.title + event.date}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                className={`flex flex-col md:flex-row items-center gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                {/* Content */}
-                <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <div className="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-                    <div className={`flex items-center gap-2 mb-3 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
-                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium">
-                        <Calendar className="w-3 h-3" />
-                        {event.date}
-                      </span>
-                    </div>
-                    
-                    <h3 className="font-display text-xl font-bold mb-1">{event.title}</h3>
-                    <p className="text-primary-600 dark:text-primary-400 font-medium mb-2">{event.position}</p>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-2">
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />
-                        {event.employer} · {event.location}
-                      </span>
-                    </p>
-                    <p className="text-zinc-600 dark:text-zinc-400">{event.description}</p>
-                  </div>
+        <div className="space-y-6">
+          {events.map((event, index) => (
+            <motion.div
+              key={event.title + event.date}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+              className="flex gap-6 p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900 hover:shadow-lg transition-shadow"
+            >
+              {/* Icon */}
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                  <event.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                 </div>
+              </div>
 
-                {/* Icon */}
-                <div className="relative z-10">
-                  <div className="w-16 h-16 rounded-full bg-primary-500 flex items-center justify-center shadow-lg">
-                    <event.icon className="w-7 h-7 text-white" />
-                  </div>
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                  <h3 className="font-display text-lg font-bold">{event.title}</h3>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium sm:ml-auto">
+                    <Calendar className="w-3 h-3" />
+                    {event.date}
+                  </span>
                 </div>
-
-                {/* Image */}
-                <div className="flex-1">
-                  {event.image && (
-                    <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg ${
-                      index % 2 === 0 ? '' : 'md:order-first'
-                    }`}>
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                
+                <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-1">{event.position}</p>
+                
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-2">
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin className="w-3 h-3" />
+                    {event.employer} · {event.location}
+                  </span>
+                </p>
+                
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm">{event.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
