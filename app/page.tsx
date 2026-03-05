@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Hero from './components/Hero'
 import About from './components/About'
 import Showreel from './components/Showreel'
@@ -15,8 +14,8 @@ export default function Home() {
       <Navigation />
       <Hero />
       <About />
-      <Showreel />
       <Experience />
+      <Showreel />
       <Contact />
       <Footer />
     </main>

@@ -40,22 +40,28 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
+          {/* Large Image */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1"
+            className="relative"
           >
-            <Image
-              src="/images/image04.jpg"
-              alt="Laura Grimm bei der Arbeit"
-              fill
-              className="object-cover"
-            />
+            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/image04.jpg"
+                alt="Laura Grimm bei der Arbeit"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-8 -right-8 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 p-6 rounded-2xl shadow-xl">
+              <p className="text-3xl font-bold">5+</p>
+              <p className="text-sm opacity-80">Jahre Erfahrung</p>
+            </div>
           </motion.div>
 
-          <div className="order-1 lg:order-2">
+          <div>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

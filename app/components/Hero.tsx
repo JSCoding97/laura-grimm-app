@@ -1,116 +1,97 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Play } from 'lucide-react'
+import { ArrowRight, Play } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-50 via-white to-primary-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950"
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 left-10 w-72 h-72 bg-primary-200/30 dark:bg-primary-900/20 rounded-full blur-3xl"
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/image02.jpg"
+          alt="Laura Grimm"
+          fill
+          className="object-cover opacity-40"
+          priority
         />
-        <motion.div
-          animate={{
-            x: [0, -20, 0],
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-rose-200/30 dark:bg-rose-900/20 rounded-full blur-3xl"
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/90 via-zinc-900/70 to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
-            <motion.div
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-2xl">
+            <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-2 mb-6 text-sm font-medium tracking-wider text-white/80 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
             >
-              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wide text-primary-700 dark:text-primary-300 bg-primary-100/80 dark:bg-primary-900/30 rounded-full">
-                Moderation aus der Rhein-Neckar-Region
-              </span>
-            </motion.div>
+              Professionalität trifft Leidenschaft
+            </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold tracking-tight mb-6"
+              className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 text-white"
             >
-              <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent">
-                Laura Grimm
-              </span>
+              Laura Grimm
             </motion.h1>
 
-            <motion.h2
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl sm:text-2xl md:text-3xl font-light text-zinc-600 dark:text-zinc-400 mb-6"
+              className="text-2xl sm:text-3xl font-light text-zinc-300 mb-6"
             >
-              Event · Fernsehsendung · Radio · Podcast
-            </motion.h2>
+              Moderation aus der Rhein-Neckar-Region
+            </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mb-8"
+              className="text-lg text-zinc-400 mb-10 leading-relaxed"
             >
-              Moderation mit Herz und Hingabe. Menschen unterhalten mit Freude und Leichtigkeit.
+              Für Ihr Event, Ihre Fernsehsendung oder Ihren Podcast: Professionelle Moderation 
+              mit Herz, Stimme und einem feinen Gespür für Menschen und Momente.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              className="flex flex-col sm:flex-row items-start gap-4"
             >
               <a
-                href="#showreel"
-                className="group flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-medium transition-transform hover:scale-105"
-              >
-                <Play className="w-4 h-4" />
-                Showreel ansehen
-              </a>
-              <a
                 href="#contact"
-                className="px-8 py-4 border border-zinc-300 dark:border-zinc-700 rounded-full font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                className="group flex items-center gap-2 px-8 py-4 bg-white text-zinc-900 rounded-full font-semibold transition-all hover:scale-105 hover:shadow-xl"
               >
                 Kontakt aufnehmen
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a
+                href="#showreel"
+                className="flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-full font-medium hover:bg-white/10 transition-all"
+              >
+                <Play className="w-5 h-5" />
+                Showreel ansehen
               </a>
             </motion.div>
           </div>
 
-          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="order-1 lg:order-2 flex justify-center lg:justify-end"
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="hidden lg:block relative"
           >
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[3/4] w-full max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
               <Image
                 src="/images/image02.jpg"
                 alt="Laura Grimm"
@@ -119,20 +100,13 @@ export default function Hero() {
                 priority
               />
             </div>
+            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-zinc-800 p-4 rounded-2xl shadow-xl">
+              <p className="text-sm font-medium text-zinc-900 dark:text-white">Rhein-Neckar-Fernsehen</p>
+              <p className="text-xs text-zinc-500">Moderatorin seit 2023</p>
+            </div>
           </motion.div>
         </div>
       </div>
-
-      <motion.a
-        href="#about"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-        aria-label="Scroll down"
-      >
-        <ArrowDown className="w-6 h-6 text-zinc-400" />
-      </motion.a>
     </section>
   )
 }
