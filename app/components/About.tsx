@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Heart, Mic2, Users, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 const features = [
   {
@@ -39,7 +40,22 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1"
+          >
+            <Image
+              src="/images/image04.jpg"
+              alt="Laura Grimm bei der Arbeit"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
+          <div className="order-1 lg:order-2">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -74,33 +90,33 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed"
+              className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10"
             >
               Ob Fernsehsendung, Radio, Podcast oder Live-Event – ich bringe Leidenschaft 
               und Professionalität mit, die jedes Format bereichert.
             </motion.p>
-          </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="group p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900 hover:bg-primary-50 dark:hover:bg-primary-950/30 transition-colors duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                </div>
-                <h3 className="font-display text-xl font-semibold mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-primary-50 dark:hover:bg-primary-950/30 transition-colors duration-300"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <h3 className="font-display text-lg font-semibold mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

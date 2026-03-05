@@ -2,7 +2,8 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, Phone, MapPin, Instagram, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import Image from 'next/image'
 
 const contactInfo = [
   {
@@ -65,86 +66,30 @@ export default function Contact() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white dark:bg-zinc-950 p-8 rounded-2xl shadow-sm"
+            className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1"
           >
-            <form className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                    placeholder="Dein Name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    E-Mail
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                    placeholder="deine@email.de"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Betreff
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                  placeholder="Worum geht's?"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Nachricht
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all resize-none"
-                  placeholder="Deine Nachricht..."
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-xl font-medium hover:scale-105 transition-transform"
-              >
-                <Send className="w-4 h-4" />
-                Nachricht senden
-              </button>
-            </form>
+            <Image
+              src="/images/image01.jpg"
+              alt="Laura Grimm"
+              fill
+              className="object-cover"
+            />
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Info & Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col justify-center"
+            className="order-1 lg:order-2"
           >
-            <div className="space-y-6">
+            <div className="space-y-6 mb-10">
               {contactInfo.map((item, index) => (
                 <motion.a
                   key={item.label}
@@ -152,7 +97,7 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-white dark:hover:bg-zinc-800 transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
@@ -171,7 +116,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary-100 to-rose-100 dark:from-primary-900/30 dark:to-rose-900/30"
+              className="p-6 rounded-2xl bg-gradient-to-br from-primary-100 to-rose-100 dark:from-primary-900/30 dark:to-rose-900/30"
             >
               <p className="text-zinc-700 dark:text-zinc-300 italic text-lg">
                 &ldquo;Menschen unterhalten mit Freude und Leichtigkeit.&rdquo;

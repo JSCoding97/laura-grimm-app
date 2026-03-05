@@ -3,22 +3,23 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Play, ExternalLink } from 'lucide-react'
+import Image from 'next/image'
 
 const videos = [
   {
     title: 'Jürgen Müller – Der Ninja-Opi',
     url: 'https://www.rnf.de/mediathek/video/juergen-mueller-der-ninjaopi-aus-seckenheim/',
-    thumbnail: '/thumbnails/ninja-opi.jpg',
+    thumbnail: '/images/image03.jpg',
   },
   {
     title: 'Freiwilligenwoche – Wir schaffen Demokratie',
     url: 'https://www.rnf.de/mediathek/video/freiwilligenwoche-wir-schaffen-demokratie/',
-    thumbnail: '/thumbnails/demokratie.jpg',
+    thumbnail: '/images/image06.jpg',
   },
   {
     title: 'Turmspringen in Mannheim',
     url: 'https://www.rnf.de/mediathek/video/turmspringen-in-mannheim-mit-welcher-technik-schafft-man-den-10-meter-sprung/',
-    thumbnail: '/thumbnails/turmspringen.jpg',
+    thumbnail: '/images/image05.jpg',
   },
 ]
 
@@ -75,16 +76,18 @@ export default function Showreel() {
               className="group relative block"
             >
               <div className="relative aspect-video rounded-2xl overflow-hidden bg-zinc-200 dark:bg-zinc-800">
-                {/* Placeholder for thumbnail */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-200 to-rose-200 dark:from-primary-900/50 dark:to-rose-900/50" />
+                <Image
+                  src={video.thumbnail}
+                  alt={video.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
                 
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
                   <div className="w-16 h-16 rounded-full bg-white/90 dark:bg-zinc-900/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Play className="w-6 h-6 text-primary-600 dark:text-primary-400 ml-1" />
                   </div>
                 </div>
-
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 dark:group-hover:bg-white/10 transition-colors duration-300" />
               </div>
 
               <div className="mt-4 flex items-start justify-between">

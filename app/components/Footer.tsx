@@ -19,9 +19,17 @@ export default function Footer() {
             Made with <Heart className="w-4 h-4 text-primary-500 fill-current" /> in Mannheim
           </p>
           
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            &copy; {currentYear} Laura Grimm. Alle Rechte vorbehalten.
-          </p>
+          <div className="flex items-center gap-6">
+            <Link 
+              href="/impressum"
+              className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            >
+              Impressum
+            </Link>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              &copy; {currentYear} Laura Grimm
+            </p>
+          </div>
         </div>
       </div>
     </footer>

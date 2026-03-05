@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowDown, Play } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -37,66 +38,89 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wide text-primary-700 dark:text-primary-300 bg-primary-100/80 dark:bg-primary-900/30 rounded-full">
-            Moderation aus der Rhein-Neckar-Region
-          </span>
-        </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Text Content */}
+          <div className="text-center lg:text-left order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wide text-primary-700 dark:text-primary-300 bg-primary-100/80 dark:bg-primary-900/30 rounded-full">
+                Moderation aus der Rhein-Neckar-Region
+              </span>
+            </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
-        >
-          <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent">
-            Laura Grimm
-          </span>
-        </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold tracking-tight mb-6"
+            >
+              <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent">
+                Laura Grimm
+              </span>
+            </motion.h1>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-xl sm:text-2xl md:text-3xl font-light text-zinc-600 dark:text-zinc-400 mb-8"
-        >
-          Event · Fernsehsendung · Radio · Podcast
-        </motion.h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl sm:text-2xl md:text-3xl font-light text-zinc-600 dark:text-zinc-400 mb-6"
+            >
+              Event · Fernsehsendung · Radio · Podcast
+            </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto mb-10"
-        >
-          Moderation mit Herz und Hingabe. Menschen unterhalten mit Freude und Leichtigkeit.
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mb-8"
+            >
+              Moderation mit Herz und Hingabe. Menschen unterhalten mit Freude und Leichtigkeit.
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a
-            href="#showreel"
-            className="group flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-medium transition-transform hover:scale-105"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            >
+              <a
+                href="#showreel"
+                className="group flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-medium transition-transform hover:scale-105"
+              >
+                <Play className="w-4 h-4" />
+                Showreel ansehen
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-4 border border-zinc-300 dark:border-zinc-700 rounded-full font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              >
+                Kontakt aufnehmen
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
-            <Play className="w-4 h-4" />
-            Showreel ansehen
-          </a>
-          <a
-            href="#contact"
-            className="px-8 py-4 border border-zinc-300 dark:border-zinc-700 rounded-full font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            Kontakt aufnehmen
-          </a>
-        </motion.div>
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/image02.jpg"
+                alt="Laura Grimm"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       <motion.a
