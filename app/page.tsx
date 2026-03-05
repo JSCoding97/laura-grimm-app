@@ -2,8 +2,9 @@
 
 import Hero from './components/Hero'
 import About from './components/About'
+import Career from './components/Career'
+import Events from './components/Events'
 import Showreel from './components/Showreel'
-import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
@@ -14,7 +15,8 @@ export default function Home() {
       <Navigation />
       <Hero />
       <About />
-      <Experience />
+      <Career />
+      <Events />
       <Showreel />
       <Contact />
       <Footer />

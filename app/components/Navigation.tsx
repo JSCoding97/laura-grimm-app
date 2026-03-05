@@ -7,8 +7,9 @@ import { Menu, X, Moon, Sun } from 'lucide-react'
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'Über mich', href: '#about' },
+  { name: 'Karriere', href: '#career' },
+  { name: 'Events', href: '#events' },
   { name: 'Showreel', href: '#showreel' },
-  { name: 'Erfahrung', href: '#experience' },
   { name: 'Kontakt', href: '#contact' },
 ]
 
