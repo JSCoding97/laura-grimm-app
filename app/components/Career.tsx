@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Building2, Calendar, MapPin, Briefcase, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 const jobs = [
   {
@@ -12,6 +13,8 @@ const jobs = [
     date: 'Feb. 2026 – Heute',
     location: 'Ludwigshafen am Rhein, Rheinland-Pfalz',
     description: 'Ich habe die Uferseite gewechselt. Und das im doppelten Sinn 🎥🎙️ Zuletzt war ich als leidenschaftliche Journalistin für den ältesten privaten regionalen Fernsehsender Deutschlands unterwegs. Nun bin ich als Referentin für Presse- und Öffentlichkeitsarbeit bei der Rheinbrückengesellschaft Mannheim-Ludwigshafen mbH tätig.',
+    logo: '/logos/rheinbruecke.svg',
+    logoBg: '#FFFFFF',
   },
   {
     title: 'Social Media Manager, Videojournalistin und Moderatorin',
@@ -20,6 +23,8 @@ const jobs = [
     date: 'Sept. 2021 – März 2026',
     location: 'Heidelberg, Baden-Württemberg',
     description: 'Moderation und Redaktion für lokale Fernsehformate. Social Media Management und Videojournalismus für den ältesten privaten regionalen Fernsehsender Deutschlands.',
+    logo: '/logos/rnf.svg',
+    logoBg: '#E2001A',
   },
   {
     title: 'Presse & Content Managerin',
@@ -28,6 +33,8 @@ const jobs = [
     date: 'März 2021 – Sept. 2021',
     location: 'Heidelberg, Baden-Württemberg',
     description: 'Pressearbeit und Content Management für ein Immobilienunternehmen.',
+    logo: '/logos/deutsche-wohnwerte.svg',
+    logoBg: '#FFFFFF',
   },
   {
     title: 'PR-Beraterin/Redakteurin',
@@ -36,6 +43,8 @@ const jobs = [
     date: 'Juni 2020 – März 2021',
     location: 'Karlsruhe, Baden-Württemberg',
     description: 'Beratung und Umsetzung von PR-Maßnahmen für verschiedene Kunden.',
+    logo: '/logos/arthen.svg',
+    logoBg: '#FFFFFF',
   },
   {
     title: 'Volontärin',
@@ -44,6 +53,8 @@ const jobs = [
     date: 'März 2019 – Juni 2020',
     location: 'Karlsruhe, Baden-Württemberg',
     description: 'Volontariat in der Pressestelle eines der größten Drogeriemärkte Deutschlands.',
+    logo: '/logos/dm.svg',
+    logoBg: '#F4F4F4',
   },
   {
     title: 'PR-Managerin',
@@ -52,6 +63,8 @@ const jobs = [
     date: 'Apr. 2018 – Feb. 2019',
     location: 'Karlsruhe, Baden-Württemberg',
     description: 'Schriftliche Kommunikation, Facebook-Marketing und PR-Management für Messeveranstaltungen.',
+    logo: '/logos/boerding.svg',
+    logoBg: '#FFFFFF',
   },
   {
     title: 'Sendungsproducerin',
@@ -60,6 +73,8 @@ const jobs = [
     date: 'Juni 2017 – Dez. 2017',
     location: 'Baden-Baden, Baden-Württemberg',
     description: 'Produktion von Radiosendungen und Podcasts. Schriftliche Kommunikation und Zeitmanagement.',
+    logo: '/logos/swr.svg',
+    logoBg: '#002B49',
   },
   {
     title: 'Praktikum',
@@ -68,6 +83,8 @@ const jobs = [
     date: 'Aug. 2016 – Okt. 2016',
     location: 'Saarland',
     description: 'Praktikum im Bereich Hörfunk. Schriftliche Kommunikation und Zeitmanagement.',
+    logo: '/logos/radio-salue.svg',
+    logoBg: '#E2001A',
   },
   {
     title: 'Praktikum',
@@ -76,6 +93,8 @@ const jobs = [
     date: 'Feb. 2016 – Mai 2016',
     location: 'Mannheim, Baden-Württemberg',
     description: 'Erstes Praktikum im Hörfunk und die Grundlage für meine spätere Karriere im Medienbereich.',
+    logo: '/logos/radio-regenbogen.svg',
+    logoBg: '#FF6600',
   },
 ]
 
@@ -135,10 +154,27 @@ export default function Career() {
               className="group bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-dark/5"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-6">
-                {/* Icon */}
+                {/* Logo */}
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                    <Building2 className="w-7 h-7 text-primary group-hover:text-white" />
+                  <div 
+                    className="w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden"
+                    style={{ backgroundColor: job.logoBg }}
+                  >
+                    {job.logo ? (
+                      <Image
+                        src={job.logo}
+                        alt={job.company}
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                        onError={(e) => {
+                          // Fallback to icon if logo fails to load
+                          e.currentTarget.style.display = 'none'
+                          e.currentTarget.parentElement?.classList.add('fallback-active')
+                        }}
+                      />
+                    ) : null}
+                    <Building2 className="w-8 h-8 text-primary" />
                   </div>
                 </div>
 

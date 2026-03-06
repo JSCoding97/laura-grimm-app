@@ -16,7 +16,6 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic here
     console.log('Form submitted:', formState)
   }
 
@@ -35,20 +34,15 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-32 bg-ice overflow-hidden"
+      className="relative py-24 md:py-32 bg-ice"
     >
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-dark to-transparent" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cream/50 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-cream rounded-full">
             <Send className="w-4 h-4 text-primary" />
@@ -65,15 +59,15 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Info Side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-6"
           >
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm">
               <h3 className="font-display text-xl font-semibold text-dark mb-6">
                 Direkter Kontakt
               </h3>
@@ -101,7 +95,7 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="bg-dark p-8 rounded-2xl">
+            <div className="bg-dark p-6 md:p-8 rounded-2xl">
               <h3 className="font-display text-xl font-semibold text-white mb-6">
                 Social Media
               </h3>
@@ -113,7 +107,7 @@ export default function Contact() {
                     className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-cream hover:text-dark transition-all"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-5 h-5 text-cream hover:text-dark" />
+                    <social.icon className="w-5 h-5 text-cream" />
                   </a>
                 ))}
               </div>
@@ -127,7 +121,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-white p-6 md:p-10 rounded-2xl shadow-lg">
               <h3 className="font-display text-2xl font-semibold text-dark mb-8">
                 Senden Sie mir eine Nachricht
               </h3>
