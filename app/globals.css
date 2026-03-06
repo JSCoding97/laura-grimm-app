@@ -5,6 +5,12 @@
 :root {
   --font-inter: 'Inter', system-ui, sans-serif;
   --font-space-grotesk: 'Space Grotesk', system-ui, sans-serif;
+  
+  /* Custom Colors */
+  --color-cream: #E7DFC6;
+  --color-ice: #E9F1F7;
+  --color-primary: #2274A5;
+  --color-dark: #131B23;
 }
 
 html {
@@ -12,12 +18,17 @@ html {
 }
 
 body {
-  @apply bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased;
+  @apply bg-ice text-dark antialiased;
+  font-family: var(--font-inter);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .font-display {
+    font-family: var(--font-space-grotesk);
   }
 }
 
@@ -27,13 +38,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-zinc-100 dark:bg-zinc-900;
+  background: #E9F1F7;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+  background: #2274A5;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-zinc-400 dark:bg-zinc-600;
+  background: #1B5D84;
+}
+
+/* Selection */
+::selection {
+  background: #2274A5;
+  color: white;
 }

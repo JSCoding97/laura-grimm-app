@@ -3,8 +3,7 @@
 import Hero from './components/Hero'
 import About from './components/About'
 import Career from './components/Career'
-import Events from './components/Events'
-import Showreel from './components/Showreel'
+import Education from './components/Education'
 import Contact from './components/Contact'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
@@ -16,8 +15,7 @@ export default function Home() {
       <Hero />
       <About />
       <Career />
-      <Events />
-      <Showreel />
+      <Education />
       <Contact />
       <Footer />
     </main>

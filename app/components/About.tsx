@@ -2,30 +2,14 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Heart, Mic2, Users, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import { Heart, Mic, Users, Sparkles } from 'lucide-react'
 
-const features = [
-  {
-    icon: Heart,
-    title: 'Mit Herz',
-    description: 'Echte Leidenschaft für jedes Event und jede Sendung.',
-  },
-  {
-    icon: Mic2,
-    title: 'Mit Stimme',
-    description: 'Professionelle Moderation für Fernsehen, Radio und Podcasts.',
-  },
-  {
-    icon: Users,
-    title: 'Mit Publikum',
-    description: 'Ein feines Gespür für Menschen und Momente.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Mit Hingabe',
-    description: 'Charme und Professionalität auf jeder Bühne.',
-  },
+const highlights = [
+  { icon: Mic, label: 'Live-Moderation', value: '50+' },
+  { icon: Users, label: 'Zufriedene Kunden', value: '30+' },
+  { icon: Heart, label: 'Leidenschaft', value: '100%' },
+  { icon: Sparkles, label: 'Jahre Erfahrung', value: '10+' },
 ]
 
 export default function About() {
@@ -36,93 +20,110 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-24 md:py-32 bg-white dark:bg-zinc-950"
+      className="relative py-32 bg-ice overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Decorative Background */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-cream/30 -skew-x-12 transform origin-top-right" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Large Image */}
+          {/* Image Side */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/image04.jpg"
-                alt="Laura Grimm bei der Arbeit"
+                src="/images/image02.jpg"
+                alt="Laura Grimm"
                 fill
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/30 to-transparent" />
             </div>
-            <div className="absolute -bottom-8 -right-8 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 p-6 rounded-2xl shadow-xl">
-              <p className="text-3xl font-bold">5+</p>
-              <p className="text-sm opacity-80">Jahre Erfahrung</p>
-            </div>
+            
+            {/* Floating Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl"
+            >
+              <p className="text-4xl font-display font-bold text-primary">10+</p>
+              <p className="text-sm text-dark/60">Jahre Erfahrung</p>
+            </motion.div>
           </motion.div>
 
+          {/* Content Side */}
           <div>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
-              className="inline-block text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-cream rounded-full"
             >
-              Über mich
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium tracking-wider text-dark/80 uppercase">
+                Über mich
+              </span>
             </motion.span>
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+              className="font-display text-4xl sm:text-5xl font-bold text-dark mb-6 leading-tight"
             >
-              Moderation mit Herz und Hingabe
+              Moderation mit<br />
+              <span className="text-primary">Herz und Hingabe</span>
             </motion.h2>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed"
+              className="space-y-4 text-dark/70 text-lg leading-relaxed"
             >
-              Ich bin Laura, Moderatorin aus der Rhein-Neckar-Region. Schon früh habe ich 
-              meine Begeisterung für das Fernsehen und die Moderation entdeckt – heute 
-              lebe ich diesen Traum und begleite Events mit Professionalität, Charme und 
-              einem feinen Gespür für Menschen und Momente.
-            </motion.p>
+              <p>
+                Ich bin Laura, Moderatorin aus der Rhein-Neckar-Region – mit Herz, 
+                Stimme und echter Leidenschaft für Bühne und Publikum.
+              </p>
+              <p>
+                Schon früh habe ich meine Begeisterung für das Fernsehen und die 
+                Moderation entdeckt. Heute lebe ich diesen Traum und begleite Events 
+                mit Professionalität, Charme und einem feinen Gespür für Menschen und Momente.
+              </p>
+              <p>
+                Von der ersten Praktikumserfahrung beim Radio bis hin zur aktuellen 
+                Position als Referentin für Presse und Öffentlichkeitsarbeit – mein 
+                Weg führte mich durch alle Facetten der Medienwelt.
+              </p>
+            </motion.div>
 
-            <motion.p
+            {/* Highlights Grid */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10"
             >
-              Ob Fernsehsendung, Radio, Podcast oder Live-Event – ich bringe Leidenschaft 
-              und Professionalität mit, die jedes Format bereichert.
-            </motion.p>
-
-            <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
+              {highlights.map((item, index) => (
                 <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="group p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 hover:bg-primary-50 dark:hover:bg-primary-950/30 transition-colors duration-300"
+                  key={item.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                  className="text-center p-4 bg-white rounded-xl shadow-sm"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <h3 className="font-display text-lg font-semibold mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                    {feature.description}
-                  </p>
+                  <item.icon className="w-6 h-6 text-primary mx-auto mb-2" />
+                  <p className="text-2xl font-display font-bold text-dark">{item.value}</p>
+                  <p className="text-xs text-dark/60">{item.label}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
