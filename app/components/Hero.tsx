@@ -105,32 +105,14 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.4 }}
             className="hidden lg:block relative"
           >
-            <div className="relative aspect-[3/4] w-full max-w-md mx-auto">
-              {/* Decorative Frame */}
-              <div className="absolute -inset-4 border border-cream/20 rounded-3xl" />
-              <div className="absolute -inset-8 border border-primary/20 rounded-3xl" />
-              
-              {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/image02.jpg"
-                  alt="Laura Grimm"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-
-              {/* Floating Badge */}
-              <motion.div 
-                className="absolute -bottom-6 -left-6 bg-cream text-dark p-6 rounded-2xl shadow-xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <p className="text-sm font-semibold">10+ Jahre</p>
-                <p className="text-xs text-dark/70">Erfahrung in Medien</p>
-              </motion.div>
+            <div className="relative aspect-[3/4] w-full max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/image02.jpg"
+                alt="Laura Grimm"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </motion.div>
         </div>
